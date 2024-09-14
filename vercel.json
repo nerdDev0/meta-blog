@@ -1,4 +1,11 @@
 {
-    "buildCommand": "npm run build && npx prisma generate"
+    "buildCommand": "npm run build && npx prisma generate",
+    
+      "build": {
+        "env": {
+          "PRISMA_CLIENT_ENGINE_TYPE": "binary",
+            "CLEAR_CACHE": "true"
+        }
+      }
   }
   
