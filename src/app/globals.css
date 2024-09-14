@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.adsBox {
+  width: 55%;
+  height: 6rem;
+  border-radius: 10px;
+}
+
+.authorInfo {
+  max-width: 35rem !important;
+}
+
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border-radius: 8px;
+  color: white;
+}
+
+.tiptap:first-child {
+  margin-top: 0;
+}
+
+/* Scoped to the editor */
+.tiptap {
+  height: 300px;
+  overflow-y: scroll;
+  padding: 5px;
+}
+.tiptap:focus {
+  outline: none;
+}
