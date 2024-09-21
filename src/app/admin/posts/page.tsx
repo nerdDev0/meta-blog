@@ -1,5 +1,8 @@
+import FormattedDate from "@/components/FormattedDate";
+import { getPosts } from "@/lib/posts";
+
 const PostsPage = async () => {
-  const posts = [{ id: 1, createAt: "12 may", title: "software" }];
+const posts=await getPosts()
   return (
     <>
       <div className="overflow-x-auto">
@@ -17,7 +20,7 @@ const PostsPage = async () => {
             {posts.map((post) => (
               <tr key={post.id} className="hover:bg-base-200">
                 <th>{post.id}</th>
-                <td>{post.createAt}</td>
+                <td>   <FormattedDate date={post.createdAt}/></td>
                 <td>{post.title}</td>
                 <td>
                   <div className="dropdown dropdown-left">
@@ -28,11 +31,11 @@ const PostsPage = async () => {
                       tabIndex={0}
                       className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
                     >
-                      <li>
-                        <a>Item 1</a>
+                     <li>
+                        <a>Active</a>
                       </li>
                       <li>
-                        <a>Item 2</a>
+                        <a>Inactive</a>
                       </li>
                     </ul>
                   </div>

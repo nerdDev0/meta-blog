@@ -1,9 +1,8 @@
+import { getUsers } from "@/lib/users";
 
 
 const UsersPage = async () => {
-  const users = [
-    {id:1,name:"Amir",about:"developer",email:"nerdev0.com"}
-  ]
+  const users =await getUsers()
   return (
     <>
       <div className="overflow-x-auto">
@@ -13,7 +12,6 @@ const UsersPage = async () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Job</th>
               <th>email</th>
               <th>Action</th>
             </tr>
@@ -23,7 +21,6 @@ const UsersPage = async () => {
               <tr key={user.id} className="hover:bg-base-200">
                 <th>{user.id}</th>
                 <td>{user.name}</td>
-                <td>{user.about}</td>
                 <td>{user.email}</td>
                 <td>
                   <div className="dropdown dropdown-left">
@@ -35,10 +32,10 @@ const UsersPage = async () => {
                       className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
                     >
                       <li>
-                        <a>Item 1</a>
+                        <a>Active</a>
                       </li>
                       <li>
-                        <a>Item 2</a>
+                        <a>Inactive</a>
                       </li>
                     </ul>
                   </div>

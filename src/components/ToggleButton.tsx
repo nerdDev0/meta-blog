@@ -2,24 +2,22 @@
 
 import { useEffect, useState } from "react";
 
-interface ToggleButtonProps {
-  handleToggle: (e: React.ChangeEvent<HTMLInputElement>) => void; // یا نوع دیگر
-}
-
 export const ToggleButton: React.FC = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "light");
-  const handleToggle = (e: any) => {
-    if (e.target.checked) {
-      setTheme("night");
-    } else {
-      setTheme("light");
-    }
-  };
+  const [theme, setTheme] = useState("light");
+
   useEffect(() => {
-    localStorage.setItem("theme", theme!);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html")?.setAttribute("data-theme", localTheme!);
-  }, [theme]);
+    const savedTheme = localStorage.getItem("theme") ?? "light";
+    setTheme(savedTheme);
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }, []);
+
+  const handleToggle = (e: any) => {
+    const newTheme = e.target.checked ? "night" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+  };
+
   return (
     <label className="grid cursor-pointer place-items-center">
       <input
